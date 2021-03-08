@@ -1,4 +1,4 @@
-package br.inf.ufg.BancoThiago;
+package BancoThiago;
 import java.util.Random;
 
 public class Conta {

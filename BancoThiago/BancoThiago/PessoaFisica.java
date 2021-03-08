@@ -1,4 +1,4 @@
-package br.inf.ufg.BancoThiago;
+package BancoThiago;
 
 public class PessoaFisica extends Pessoa{
 

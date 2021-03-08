@@ -1,6 +1,5 @@
-package br.inf.ufg.BancoThiago;
+package BancoThiago;
 import java.util.Scanner;
-import java.util.Random;
 
 public class Pessoa {
 	private int id;
@@ -37,6 +36,12 @@ public class Pessoa {
 		
 		try (Scanner input = new Scanner(System.in)) {
 
+			do {
+				System.out.println("Enter client id: ");
+				int id = input.nextInt();
+			} while(id < 0 || id > 99999999)
+				client.setName(name);
+
 			System.out.println("Enter client name: ");
 			String name = input.nextLine();
 			client.setName(name);
@@ -49,10 +54,4 @@ public class Pessoa {
 		
 		return client;
 	}
-	
-	public int randIdNo() {
-		Random number = new Random(0);
-		return (number.nextInt(99999999));
-	}
-
 }

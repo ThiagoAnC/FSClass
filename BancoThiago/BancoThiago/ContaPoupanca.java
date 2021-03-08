@@ -1,4 +1,4 @@
-package br.inf.ufg.BancoThiago;
+package BancoThiago;
 
 public class ContaPoupanca extends Conta{
 
@@ -12,8 +12,6 @@ public class ContaPoupanca extends Conta{
 		this.corrcTx = corrcTx;
 	}
 	
-	
-
 	@Override
 	public void getConta() {
 		super.getConta();
