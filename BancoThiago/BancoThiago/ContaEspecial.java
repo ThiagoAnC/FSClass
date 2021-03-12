@@ -3,7 +3,7 @@ package BancoThiago;
 public class ContaEspecial extends Conta{
 
 	double limit;
-	
+
 	public double getLimit() {
 		return limit;
 	}
@@ -11,15 +11,19 @@ public class ContaEspecial extends Conta{
 	public void setLimit(double limit) {
 		this.limit = limit;
 	}
-	
-	@Override
-	protected int showBalance(Conta conta) {
-		return super.showBalance(conta);
-	}
 
 	@Override
-	public void getConta() {
-		super.getConta();
+	public double getBalance() {
+		return super.getBalance();
 	}
 	
+	@Override
+	public void getCash(double value) {
+		super.getCash(value);
+	}
+
+	public ContaEspecial(Pessoa client, int accNmb, double balance, double limit) {
+		super.getConta(client ,accNmb, balance);
+		this.setLimit(limit);
+	}
 }
