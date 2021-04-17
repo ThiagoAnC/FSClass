@@ -1,4 +1,4 @@
-package br.ufg.inf.fullstack.ctrl.service;
+package br.ufg.inf.fullstack.ctrl.crtlentities;
 
 import java.util.List;
 
@@ -13,32 +13,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.ufg.inf.fullstack.ctrl.business.PessoaBusiness;
-import br.ufg.inf.fullstack.model.entities.Pessoa;
+import br.ufg.inf.fullstack.ctrl.business.OfertaBusiness;
+import br.ufg.inf.fullstack.model.entities.Oferta;
 
 @RestController
-@RequestMapping(value="/pessoas")
-public class PessoaCtrl {
-
+@RequestMapping(value="/ofertas")
+public class OfertaCtrl {
+	
 	@Autowired
-	private PessoaBusiness business;
+	private OfertaBusiness business;
 	
 	@GetMapping
-	public ResponseEntity<List<Pessoa>> findAll() {
-		List<Pessoa> list = business.findAll();
+	public ResponseEntity<List<Oferta>> findAll() {
+		List<Oferta> list = business.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping(value="/{id}")
-	public ResponseEntity<Pessoa> findById(@PathVariable Integer id){
-		Pessoa retorno = business.findById(id);
+	public ResponseEntity<Oferta> findById(@PathVariable Integer id){
+		Oferta retorno = business.findById(id);
 		return ResponseEntity.ok(retorno);
 	}
 	
 	@PostMapping
-	public ResponseEntity<Pessoa> insert(@RequestBody Pessoa pessoa){
-		pessoa = business.insert(pessoa);
-		return ResponseEntity.ok().body(pessoa);
+	public ResponseEntity<Oferta> insert(@RequestBody Oferta oferta){
+		oferta = business.insert(oferta);
+		return ResponseEntity.ok().body(oferta);
 	}
 	
 	@DeleteMapping(value="/{id}")
@@ -48,8 +48,9 @@ public class PessoaCtrl {
 	}
 	
 	@PutMapping
-	public ResponseEntity<Pessoa> update(@RequestBody Pessoa pessoa){
-		pessoa = business.insert(pessoa);
-		return ResponseEntity.ok().body(pessoa);
+	public ResponseEntity<Oferta> update(@RequestBody Oferta oferta){
+		oferta = business.insert(oferta);
+		return ResponseEntity.ok().body(oferta);
 	}
+	
 }

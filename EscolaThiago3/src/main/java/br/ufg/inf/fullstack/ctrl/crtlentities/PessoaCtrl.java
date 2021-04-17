@@ -1,4 +1,4 @@
-package br.ufg.inf.fullstack.ctrl.service;
+package br.ufg.inf.fullstack.ctrl.crtlentities;
 
 import java.util.List;
 
@@ -13,32 +13,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.ufg.inf.fullstack.ctrl.business.DisciplinaBusiness;
-import br.ufg.inf.fullstack.model.entities.Disciplina;
+import br.ufg.inf.fullstack.ctrl.business.PessoaBusiness;
+import br.ufg.inf.fullstack.model.entities.Pessoa;
 
 @RestController
-@RequestMapping(value="/disciplinas")
-public class DisciplinaCtrl {
-	
+@RequestMapping(value="/pessoas")
+public class PessoaCtrl {
+
 	@Autowired
-	private DisciplinaBusiness business;
+	private PessoaBusiness business;
 	
 	@GetMapping
-	public ResponseEntity<List<Disciplina>> findAll() {
-		List<Disciplina> list = business.findAll();
+	public ResponseEntity<List<Pessoa>> findAll() {
+		List<Pessoa> list = business.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping(value="/{id}")
-	public ResponseEntity<Disciplina> findById(@PathVariable Integer id){
-		Disciplina retorno = business.findById(id);
+	public ResponseEntity<Pessoa> findById(@PathVariable Integer id){
+		Pessoa retorno = business.findById(id);
 		return ResponseEntity.ok(retorno);
 	}
 	
 	@PostMapping
-	public ResponseEntity<Disciplina> insert(@RequestBody Disciplina disciplina){
-		disciplina = business.insert(disciplina);
-		return ResponseEntity.ok().body(disciplina);
+	public ResponseEntity<Pessoa> insert(@RequestBody Pessoa pessoa){
+		pessoa = business.insert(pessoa);
+		return ResponseEntity.ok().body(pessoa);
 	}
 	
 	@DeleteMapping(value="/{id}")
@@ -48,9 +48,8 @@ public class DisciplinaCtrl {
 	}
 	
 	@PutMapping
-	public ResponseEntity<Disciplina> update(@RequestBody Disciplina disciplina){
-		disciplina = business.insert(disciplina);
-		return ResponseEntity.ok().body(disciplina);
+	public ResponseEntity<Pessoa> update(@RequestBody Pessoa pessoa){
+		pessoa = business.insert(pessoa);
+		return ResponseEntity.ok().body(pessoa);
 	}
-	
 }

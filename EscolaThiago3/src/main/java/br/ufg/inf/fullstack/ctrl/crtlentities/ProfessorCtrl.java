@@ -1,4 +1,4 @@
-package br.ufg.inf.fullstack.ctrl.service;
+package br.ufg.inf.fullstack.ctrl.crtlentities;
 
 import java.util.List;
 

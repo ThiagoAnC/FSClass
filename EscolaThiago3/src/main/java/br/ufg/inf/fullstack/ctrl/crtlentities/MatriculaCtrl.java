@@ -1,4 +1,4 @@
-package br.ufg.inf.fullstack.ctrl.service;
+package br.ufg.inf.fullstack.ctrl.crtlentities;
 
 import java.util.List;
 
@@ -13,32 +13,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.ufg.inf.fullstack.ctrl.business.AlunoBusiness;
-import br.ufg.inf.fullstack.model.entities.Aluno;
+import br.ufg.inf.fullstack.ctrl.business.MatriculaBusiness;
+import br.ufg.inf.fullstack.model.entities.Matricula;
 
 @RestController
-@RequestMapping(value="/alunos")
-public class AlunoCtrl {
+@RequestMapping(value="/matriculas")
+public class MatriculaCtrl {
 	
 	@Autowired
-	private AlunoBusiness business;
+	private MatriculaBusiness business;
 	
 	@GetMapping
-	public ResponseEntity<List<Aluno>> findAll() {
-		List<Aluno> list = business.findAll();
+	public ResponseEntity<List<Matricula>> findAll() {
+		List<Matricula> list = business.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping(value="/{id}")
-	public ResponseEntity<Aluno> findById(@PathVariable Integer id){
-		Aluno retorno = business.findById(id);
+	public ResponseEntity<Matricula> findById(@PathVariable Integer id){
+		Matricula retorno = business.findById(id);
 		return ResponseEntity.ok(retorno);
 	}
 	
 	@PostMapping
-	public ResponseEntity<Aluno> insert(@RequestBody Aluno aluno){
-		aluno = business.insert(aluno);
-		return ResponseEntity.ok().body(aluno);
+	public ResponseEntity<Matricula> insert(@RequestBody Matricula matricula){
+		matricula = business.insert(matricula);
+		return ResponseEntity.ok().body(matricula);
 	}
 	
 	@DeleteMapping(value="/{id}")
@@ -48,9 +48,9 @@ public class AlunoCtrl {
 	}
 	
 	@PutMapping
-	public ResponseEntity<Aluno> update(@RequestBody Aluno aluno){
-		aluno = business.insert(aluno);
-		return ResponseEntity.ok().body(aluno);
+	public ResponseEntity<Matricula> update(@RequestBody Matricula matricula){
+		matricula = business.insert(matricula);
+		return ResponseEntity.ok().body(matricula);
 	}
 	
 }

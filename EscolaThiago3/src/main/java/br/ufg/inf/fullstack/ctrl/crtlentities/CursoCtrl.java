@@ -1,4 +1,4 @@
-package br.ufg.inf.fullstack.ctrl.service;
+package br.ufg.inf.fullstack.ctrl.crtlentities;
 
 import java.util.List;
 
@@ -13,32 +13,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.ufg.inf.fullstack.ctrl.business.OfertaBusiness;
-import br.ufg.inf.fullstack.model.entities.Oferta;
+import br.ufg.inf.fullstack.ctrl.business.CursoBusiness;
+import br.ufg.inf.fullstack.model.entities.Curso;
 
 @RestController
-@RequestMapping(value="/ofertas")
-public class OfertaCtrl {
+@RequestMapping(value="/cursos")
+public class CursoCtrl {
 	
 	@Autowired
-	private OfertaBusiness business;
+	private CursoBusiness business;
 	
 	@GetMapping
-	public ResponseEntity<List<Oferta>> findAll() {
-		List<Oferta> list = business.findAll();
+	public ResponseEntity<List<Curso>> findAll() {
+		List<Curso> list = business.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping(value="/{id}")
-	public ResponseEntity<Oferta> findById(@PathVariable Integer id){
-		Oferta retorno = business.findById(id);
+	public ResponseEntity<Curso> findById(@PathVariable Integer id){
+		Curso retorno = business.findById(id);
 		return ResponseEntity.ok(retorno);
 	}
 	
 	@PostMapping
-	public ResponseEntity<Oferta> insert(@RequestBody Oferta oferta){
-		oferta = business.insert(oferta);
-		return ResponseEntity.ok().body(oferta);
+	public ResponseEntity<Curso> insert(@RequestBody Curso curso){
+		curso = business.insert(curso);
+		return ResponseEntity.ok().body(curso);
 	}
 	
 	@DeleteMapping(value="/{id}")
@@ -48,9 +48,9 @@ public class OfertaCtrl {
 	}
 	
 	@PutMapping
-	public ResponseEntity<Oferta> update(@RequestBody Oferta oferta){
-		oferta = business.insert(oferta);
-		return ResponseEntity.ok().body(oferta);
+	public ResponseEntity<Curso> update(@RequestBody Curso curso){
+		curso = business.insert(curso);
+		return ResponseEntity.ok().body(curso);
 	}
 	
 }

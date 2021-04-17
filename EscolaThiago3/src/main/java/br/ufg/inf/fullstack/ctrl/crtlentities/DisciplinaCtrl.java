@@ -1,4 +1,4 @@
-package br.ufg.inf.fullstack.ctrl.service;
+package br.ufg.inf.fullstack.ctrl.crtlentities;
 
 import java.util.List;
 
@@ -13,32 +13,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.ufg.inf.fullstack.ctrl.business.MatriculaBusiness;
-import br.ufg.inf.fullstack.model.entities.Matricula;
+import br.ufg.inf.fullstack.ctrl.business.DisciplinaBusiness;
+import br.ufg.inf.fullstack.model.entities.Disciplina;
 
 @RestController
-@RequestMapping(value="/matriculas")
-public class MatriculaCtrl {
+@RequestMapping(value="/disciplinas")
+public class DisciplinaCtrl {
 	
 	@Autowired
-	private MatriculaBusiness business;
+	private DisciplinaBusiness business;
 	
 	@GetMapping
-	public ResponseEntity<List<Matricula>> findAll() {
-		List<Matricula> list = business.findAll();
+	public ResponseEntity<List<Disciplina>> findAll() {
+		List<Disciplina> list = business.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping(value="/{id}")
-	public ResponseEntity<Matricula> findById(@PathVariable Integer id){
-		Matricula retorno = business.findById(id);
+	public ResponseEntity<Disciplina> findById(@PathVariable Integer id){
+		Disciplina retorno = business.findById(id);
 		return ResponseEntity.ok(retorno);
 	}
 	
 	@PostMapping
-	public ResponseEntity<Matricula> insert(@RequestBody Matricula matricula){
-		matricula = business.insert(matricula);
-		return ResponseEntity.ok().body(matricula);
+	public ResponseEntity<Disciplina> insert(@RequestBody Disciplina disciplina){
+		disciplina = business.insert(disciplina);
+		return ResponseEntity.ok().body(disciplina);
 	}
 	
 	@DeleteMapping(value="/{id}")
@@ -48,9 +48,9 @@ public class MatriculaCtrl {
 	}
 	
 	@PutMapping
-	public ResponseEntity<Matricula> update(@RequestBody Matricula matricula){
-		matricula = business.insert(matricula);
-		return ResponseEntity.ok().body(matricula);
+	public ResponseEntity<Disciplina> update(@RequestBody Disciplina disciplina){
+		disciplina = business.insert(disciplina);
+		return ResponseEntity.ok().body(disciplina);
 	}
 	
 }
