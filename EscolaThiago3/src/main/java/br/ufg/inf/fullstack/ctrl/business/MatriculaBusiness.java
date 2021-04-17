@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 import br.ufg.inf.fullstack.model.entities.Matricula;
 import br.ufg.inf.fullstack.model.repositories.MatriculaRepository;
 
-
-
 @Service
 public class MatriculaBusiness {
 
