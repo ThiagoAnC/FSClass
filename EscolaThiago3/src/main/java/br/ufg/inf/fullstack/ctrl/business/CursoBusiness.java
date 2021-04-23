@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.ufg.inf.fullstack.ctrl.exception.CursoException;
 import br.ufg.inf.fullstack.model.entities.Curso;
 import br.ufg.inf.fullstack.model.repositories.CursoRepository;
 
@@ -18,23 +19,35 @@ public class CursoBusiness {
 		return(repository.findAll());
 	}
 	
-	public Curso findById(Integer id) {
+	public Curso findById(Integer id) throws CursoException{
 		Optional<Curso> retorno = repository.findById(id);
+		
+		if(retorno.isEmpty()) {
+			throw new CursoException("0200");
+		}
+
 		return retorno.get();
 	}
 	
-	public Curso insert(Curso disciplina) {
-		return repository.save(disciplina);
+	public Curso insert(Curso curso) throws CursoException {
+		this.validateCurso(curso);
+		return repository.save(curso);
 	}
 	
 	public void delete(Integer id) {
 		repository.deleteById(id);
 	}
 	
-	public Curso update(Curso curso) {
+	public Curso update(Curso curso) throws CursoException{
 		Curso cursoUpd = repository.findById(curso.getIdCurso()).get();
 		curso.setNmCurso(curso.getNmCurso());
-		
+		this.validateCurso(curso);
 		return repository.save(cursoUpd);
+	}
+
+	private void validateCurso(Curso curso) throws CursoException {
+		if(curso.getNmCurso() == null || curso.getNmCurso().length() == 0) {
+			throw new CursoException("0201"); 
+		}
 	}
 }

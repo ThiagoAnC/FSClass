@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.ufg.inf.fullstack.model.entities.Aluno;
 
 @Repository
-public interface AlunoRepository extends JpaRepository<Aluno, Integer>{
+public interface AlunoRepository extends JpaRepository<Aluno, Integer> {
 
 }
