@@ -13,33 +13,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.ufg.inf.fullstack.ctrl.business.CursoBusiness;
-import br.ufg.inf.fullstack.ctrl.exception.CursoException;
-import br.ufg.inf.fullstack.model.entities.Curso;
+import br.ufg.inf.fullstack.ctrl.business.OfertaBusiness;
+import br.ufg.inf.fullstack.model.entities.Oferta;
 
 @RestController
-@RequestMapping(value="/cursos")
-public class CursoCtrl {
+@RequestMapping(value="/ofertas")
+public class OfertaCtrl {
 	
 	@Autowired
-	private CursoBusiness business;
+	private OfertaBusiness business;
 	
 	@GetMapping
-	public ResponseEntity<List<Curso>> findAll() {
-		List<Curso> list = business.findAll();
+	public ResponseEntity<List<Oferta>> findAll() {
+		List<Oferta> list = business.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping(value="/{id}")
-	public ResponseEntity<Curso> findById(@PathVariable Integer id) throws CursoException{
-		Curso retorno = business.findById(id);
+	public ResponseEntity<Oferta> findById(@PathVariable Integer id){
+		Oferta retorno = business.findById(id);
 		return ResponseEntity.ok(retorno);
 	}
 	
 	@PostMapping
-	public ResponseEntity<Curso> insert(@RequestBody Curso curso) throws CursoException{
-		curso = business.insert(curso);
-		return ResponseEntity.ok().body(curso);
+	public ResponseEntity<Oferta> insert(@RequestBody Oferta oferta){
+		oferta = business.insert(oferta);
+		return ResponseEntity.ok().body(oferta);
 	}
 	
 	@DeleteMapping(value="/{id}")
@@ -49,9 +48,9 @@ public class CursoCtrl {
 	}
 	
 	@PutMapping
-	public ResponseEntity<Curso> update(@RequestBody Curso curso) throws CursoException{
-		curso = business.insert(curso);
-		return ResponseEntity.ok().body(curso);
+	public ResponseEntity<Oferta> update(@RequestBody Oferta oferta){
+		oferta = business.insert(oferta);
+		return ResponseEntity.ok().body(oferta);
 	}
 	
 }

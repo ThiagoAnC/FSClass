@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.ufg.inf.fullstack.ctrl.business.CursoBusiness;
-import br.ufg.inf.fullstack.ctrl.exception.CursoException;
 import br.ufg.inf.fullstack.model.entities.Curso;
 
 @RestController
@@ -31,13 +30,13 @@ public class CursoCtrl {
 	}
 	
 	@GetMapping(value="/{id}")
-	public ResponseEntity<Curso> findById(@PathVariable Integer id) throws CursoException{
+	public ResponseEntity<Curso> findById(@PathVariable Integer id){
 		Curso retorno = business.findById(id);
 		return ResponseEntity.ok(retorno);
 	}
 	
 	@PostMapping
-	public ResponseEntity<Curso> insert(@RequestBody Curso curso) throws CursoException{
+	public ResponseEntity<Curso> insert(@RequestBody Curso curso){
 		curso = business.insert(curso);
 		return ResponseEntity.ok().body(curso);
 	}
@@ -49,7 +48,7 @@ public class CursoCtrl {
 	}
 	
 	@PutMapping
-	public ResponseEntity<Curso> update(@RequestBody Curso curso) throws CursoException{
+	public ResponseEntity<Curso> update(@RequestBody Curso curso){
 		curso = business.insert(curso);
 		return ResponseEntity.ok().body(curso);
 	}

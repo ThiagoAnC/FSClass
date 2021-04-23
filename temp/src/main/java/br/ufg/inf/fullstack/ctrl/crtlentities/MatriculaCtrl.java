@@ -13,33 +13,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.ufg.inf.fullstack.ctrl.business.CursoBusiness;
-import br.ufg.inf.fullstack.ctrl.exception.CursoException;
-import br.ufg.inf.fullstack.model.entities.Curso;
+import br.ufg.inf.fullstack.ctrl.business.MatriculaBusiness;
+import br.ufg.inf.fullstack.model.entities.Matricula;
 
 @RestController
-@RequestMapping(value="/cursos")
-public class CursoCtrl {
+@RequestMapping(value="/matriculas")
+public class MatriculaCtrl {
 	
 	@Autowired
-	private CursoBusiness business;
+	private MatriculaBusiness business;
 	
 	@GetMapping
-	public ResponseEntity<List<Curso>> findAll() {
-		List<Curso> list = business.findAll();
+	public ResponseEntity<List<Matricula>> findAll() {
+		List<Matricula> list = business.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping(value="/{id}")
-	public ResponseEntity<Curso> findById(@PathVariable Integer id) throws CursoException{
-		Curso retorno = business.findById(id);
+	public ResponseEntity<Matricula> findById(@PathVariable Integer id){
+		Matricula retorno = business.findById(id);
 		return ResponseEntity.ok(retorno);
 	}
 	
 	@PostMapping
-	public ResponseEntity<Curso> insert(@RequestBody Curso curso) throws CursoException{
-		curso = business.insert(curso);
-		return ResponseEntity.ok().body(curso);
+	public ResponseEntity<Matricula> insert(@RequestBody Matricula matricula){
+		matricula = business.insert(matricula);
+		return ResponseEntity.ok().body(matricula);
 	}
 	
 	@DeleteMapping(value="/{id}")
@@ -49,9 +48,9 @@ public class CursoCtrl {
 	}
 	
 	@PutMapping
-	public ResponseEntity<Curso> update(@RequestBody Curso curso) throws CursoException{
-		curso = business.insert(curso);
-		return ResponseEntity.ok().body(curso);
+	public ResponseEntity<Matricula> update(@RequestBody Matricula matricula){
+		matricula = business.insert(matricula);
+		return ResponseEntity.ok().body(matricula);
 	}
 	
 }

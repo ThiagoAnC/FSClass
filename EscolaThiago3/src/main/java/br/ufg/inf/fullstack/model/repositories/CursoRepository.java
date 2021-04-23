@@ -7,5 +7,4 @@ import br.ufg.inf.fullstack.model.entities.Curso;
 
 @Repository
 public interface CursoRepository extends JpaRepository<Curso, Integer>{
-
 }

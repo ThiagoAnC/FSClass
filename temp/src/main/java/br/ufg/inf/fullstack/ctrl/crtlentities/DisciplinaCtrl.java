@@ -13,33 +13,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.ufg.inf.fullstack.ctrl.business.CursoBusiness;
-import br.ufg.inf.fullstack.ctrl.exception.CursoException;
-import br.ufg.inf.fullstack.model.entities.Curso;
+import br.ufg.inf.fullstack.ctrl.business.DisciplinaBusiness;
+import br.ufg.inf.fullstack.model.entities.Disciplina;
 
 @RestController
-@RequestMapping(value="/cursos")
-public class CursoCtrl {
+@RequestMapping(value="/disciplinas")
+public class DisciplinaCtrl {
 	
 	@Autowired
-	private CursoBusiness business;
+	private DisciplinaBusiness business;
 	
 	@GetMapping
-	public ResponseEntity<List<Curso>> findAll() {
-		List<Curso> list = business.findAll();
+	public ResponseEntity<List<Disciplina>> findAll() {
+		List<Disciplina> list = business.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping(value="/{id}")
-	public ResponseEntity<Curso> findById(@PathVariable Integer id) throws CursoException{
-		Curso retorno = business.findById(id);
+	public ResponseEntity<Disciplina> findById(@PathVariable Integer id){
+		Disciplina retorno = business.findById(id);
 		return ResponseEntity.ok(retorno);
 	}
 	
 	@PostMapping
-	public ResponseEntity<Curso> insert(@RequestBody Curso curso) throws CursoException{
-		curso = business.insert(curso);
-		return ResponseEntity.ok().body(curso);
+	public ResponseEntity<Disciplina> insert(@RequestBody Disciplina disciplina){
+		disciplina = business.insert(disciplina);
+		return ResponseEntity.ok().body(disciplina);
 	}
 	
 	@DeleteMapping(value="/{id}")
@@ -49,9 +48,9 @@ public class CursoCtrl {
 	}
 	
 	@PutMapping
-	public ResponseEntity<Curso> update(@RequestBody Curso curso) throws CursoException{
-		curso = business.insert(curso);
-		return ResponseEntity.ok().body(curso);
+	public ResponseEntity<Disciplina> update(@RequestBody Disciplina disciplina){
+		disciplina = business.insert(disciplina);
+		return ResponseEntity.ok().body(disciplina);
 	}
 	
 }
